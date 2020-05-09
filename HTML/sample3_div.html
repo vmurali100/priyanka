@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div#header {
+        width: 850px;
+        height: 150px;
+        border: 2px solid;
+        margin-left: 20px;
+        margin-top: 20px;
+      }
+      div#slider {
+        width: 850px;
+        height: 250px;
+        margin-left: 20px;
+        border: 2px solid green;
+        margin-top: 10px;
+      }
+      div#content {
+        width: 850px;
+        height: 300px;
+        border: 2px solid blue;
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      div#footer {
+        width: 850px;
+        height: 150px;
+        border: 2px solid;
+        margin: 20px;
+      }
+      .content-child {
+        width: 270px;
+        height: 275px;
+        background: grey;
+        margin-top: 10px;
+        float: left;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper" style="width: 900px; border: 2px solid red;">
+      <div id="header"></div>
+      <div id="slider">
+        <img
+          src="https://cms.qz.com/wp-content/uploads/2017/08/bangalore1-reuters-traffic-moves-along-a-road-in-the-southern-indian-city-of-bangalore-december-14-2005.jpg?quality=75&strip=all&w=1600&h=900&crop=1"
+          alt=""
+          style="width: 100%; height: 100%;"
+        />
+      </div>
+      <div id="content">
+        <div class="content-child"></div>
+        <div class="content-child"></div>
+        <div class="content-child"></div>
+      </div>
+      <div id="footer"></div>
+    </div>
+  </body>
+</html>
