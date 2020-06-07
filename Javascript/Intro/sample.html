@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function sayHello() {
+        myName = document.getElementById("myName").value;
+        if (myName.length > 0) {
+          alert("Hello " + myName + " .. Welcome to Javascrpt");
+        } else {
+          alert("Please enter some value");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" name="" id="myName" />
+    <button onclick="sayHello()">Click</button>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var person = {
+        fname: "Murali",
+        lname: "Krishna",
+      }; // Curly Braces represents Object
+
+      //   Adding Properties to An Object
+      //   a. Properties can be added with . notation
+      //   b. Properties can be added with [] (Square Bracket) notation
+      person.city = "Bangalore";
+      person["state"] = "Karnataka";
+      person.age = 40;
+      person.company = "ABCD";
+      person.language = "Telugu";
+
+      var person1 = {
+        name: "Ram",
+        age: 30, // Numbers wont require Quotes
+        email: "ram@gamil.com", // Strings will have quotes ""
+      };
+      //   document.write(person.fname + "<br>");
+      //   document.write(person.lname + "<br>");
+      //   document.write(person.city + "<br>");
+      //   document.write(person.state);
+      delete person.company;
+      for (a in person) {
+        document.write(person[a] + "<br>");
+      }
+    </script>
+  </body>
+</html>
