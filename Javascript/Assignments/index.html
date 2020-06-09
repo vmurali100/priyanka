@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="deleteFirst()">
+      Delete First
+    </button>
+    <button>
+      Delete Last
+    </button>
+    <button>
+      Delete Middle
+    </button>
+    <script>
+      var users = ["Murali", "Krishna", "Ram", "Ravi", "kk", "vmk"]; //[] refers an array
+      function deleteFirst() {
+        users.shift();
+        console.log(users);
+      }
+    </script>
+  </body>
+</html>
