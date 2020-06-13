@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      div#myDiv {
+        border: 1px solid;
+        width: 300px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="myUsers"></ul>
+    <div id="myDiv">
+      <p>ID : 2587</p>
+      <p>User Name : VChenoweth</p>
+      <p>Email : DHoffmann@sit.com</p>
+      <p>password : xKwIz</p>
+    </div>
+    <script>
+      var users = [
+        {
+          id: 2587,
+          email: "DHoffmann@sit.com",
+          username: "VChenoweth",
+          password: "xKwIz",
+        },
+        {
+          id: 2588,
+          email: "TMuth@facilisis.net",
+          username: "AMangat",
+          password: "tObOp",
+        },
+        {
+          id: 2589,
+          email: "JObermann@convallis.com",
+          username: "FDeos",
+          password: "igz1H",
+        },
+        {
+          id: 2590,
+          email: "EKamdar@velit.com",
+          username: "ASchuhmann",
+          password: "DnGbK",
+        },
+        {
+          id: 2591,
+          email: "NDerkson@sed.com",
+          username: "SCiborowski",
+          password: "wm3p7",
+        },
+      ];
+      users.forEach(function (obj) {
+        var li = document.createElement("li");
+        li.innerHTML = obj.username;
+        document.getElementById("myUsers").appendChild(li);
+      });
+
+      //   1. Display Only Email
+      //   2 Display Only email
+      //   2 Display Only password
+      //   2 Display Only ID
+
+      //   Create a div
+      //   Disply All users  information
+    </script>
+  </body>
+</html>
