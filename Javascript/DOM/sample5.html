@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name :</label>
+      <input type="text" name="fname" id="fname" onkeyup="validate()" /> <br />
+      <label for="lname">Last Name : </label>
+      <input type="text" name="lname" id="lname" onkeyup="validate()" /> <br />
+      <label for="email"> Email :</label>
+      <input type="text" name="email" id="email" onkeyup="validate()" /> <br />
+      <button type="button" onclick="getUser()" disabled id="myBtn">
+        Get User
+      </button>
+    </form>
+    <hr />
+    <div id="demo"></div>
+    <script>
+      var users = [];
+      var obj = {
+        fname: "",
+        lname: "",
+        email: "",
+      };
+      function getUser() {
+        obj.fname = document.getElementById("fname").value;
+        obj.lname = document.getElementById("lname").value;
+        obj.email = document.getElementById("email").value;
+        users.push(obj);
+        var results = "";
+
+        for (i = 0; i < users.length; i++) {
+          for (a in users[i]) {
+            results = results + users[i][a] + "<br>";
+          }
+          results = results + "<br>";
+        }
+        document.getElementById("demo").innerHTML = results;
+        clearForm(obj);
+      }
+
+      function clearForm(obj) {
+        for (a in obj) {
+          document.getElementById(a).value = "";
+        }
+      }
+
+      function validate() {
+        var check = false;
+        for (a in obj) {
+          value = document.getElementById(a).value;
+          if (value == "") {
+            check = true;
+          }
+        }
+
+        if (!check) {
+          document.getElementById("myBtn").removeAttribute("disabled");
+        } else {
+          document.getElementById("myBtn").setAttribute("disabled", true);
+        }
+      }
+    </script>
+  </body>
+</html>
