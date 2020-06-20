@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name :</label>
+      <input type="text" name="fname" id="fname" onkeyup="validate()" /> <br />
+      <label for="lname">Last Name : </label>
+      <input type="text" name="lname" id="lname" onkeyup="validate()" /> <br />
+      <label for="email"> Email :</label>
+      <input type="text" name="email" id="email" onkeyup="validate()" /> <br />
+      <button type="button" onclick="getUser()" disabled id="myBtn">
+        Get User
+      </button>
+    </form>
+    <hr />
+    <table border="1">
+      <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody id="myTable"></tbody>
+    </table>
+    <script>
+      var users = [];
+      var obj = {
+        fname: "",
+        lname: "",
+        email: "",
+      };
+      function getUser() {
+        var newPerson = {};
+        newPerson.fname = document.getElementById("fname").value;
+        newPerson.lname = document.getElementById("lname").value;
+        newPerson.email = document.getElementById("email").value;
+
+        //Adding Object to Array
+        users.push(newPerson);
+        clearForm(newPerson);
+        displayData();
+      }
+
+      function clearForm(obj) {
+        for (a in obj) {
+          document.getElementById(a).value = "";
+        }
+      }
+
+      function validate() {
+        var check = false;
+        for (a in obj) {
+          value = document.getElementById(a).value;
+          if (value == "") {
+            check = true;
+          }
+        }
+
+        if (!check) {
+          document.getElementById("myBtn").removeAttribute("disabled");
+        } else {
+          document.getElementById("myBtn").setAttribute("disabled", true);
+        }
+      }
+
+      function displayData() {
+        document.getElementById("myTable").innerHTML = "";
+        //Iterate through Array Of Objects
+        users.map(function (obj) {
+          var myTr = document.createElement("tr");
+          for (a in obj) {
+            var myTd = document.createElement("td");
+            myTd.innerHTML = obj[a];
+            myTr.appendChild(myTd);
+          }
+          document.getElementById("myTable").appendChild(myTr);
+        });
+      }
+    </script>
+  </body>
+</html>
