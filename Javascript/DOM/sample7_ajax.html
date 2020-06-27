@@ -6,13 +6,30 @@
     <title>Document</title>
   </head>
   <body>
-    <form>
-      <label for="fname">First Name :</label>
-      <input type="text" name="fname" id="fname" onkeyup="validate()" /> <br />
-      <label for="lname">Last Name : </label>
-      <input type="text" name="lname" id="lname" onkeyup="validate()" /> <br />
+    <button onclick="getData()">Get Data</button>
+    <table border="1">
+      <thead>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody id="myTable"></tbody>
+    </table>
+    <hr />
+    <form id="myForm" style="display: none;">
+      <label for="fname">ID :</label>
+      <input type="text" name="fname" id="id" onkeyup="validate()" /> <br />
       <label for="email"> Email :</label>
-      <input type="text" name="email" id="email" onkeyup="validate()" /> <br />
+      <input type="text" name="fname" id="email" onkeyup="validate()" /> <br />
+      <label for="email"> User Name :</label>
+      <input type="text" name="fname" id="username" onkeyup="validate()" />
+      <br />
+      <label for="email"> Password :</label>
+      <input type="text" name="email" id="password" onkeyup="validate()" />
+      <br />
       <button type="button" onclick="getUser()" disabled id="myBtn">
         Get User
       </button>
@@ -26,72 +43,28 @@
         Update User
       </button>
     </form>
-    <hr />
-    <table border="1">
-      <thead>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </thead>
-      <tbody id="myTable"></tbody>
-    </table>
     <script>
-      var users = [
-        {
-          fname: "Murali",
-          lname: "krishna",
-          email: "murali@gmail.com",
-        },
-        {
-          fname: "ram",
-          lname: "ravi",
-          email: "ram@gamil.com",
-        },
-        {
-          fname: "Kiran",
-          lname: "ravi",
-          email: "kiran@gamil.com",
-        },
-      ];
       var obj = {
-        fname: "",
-        lname: "",
+        id: "",
         email: "",
+        username: "",
+        password: "",
       };
-      function getUser() {
-        var newPerson = {};
-        newPerson.fname = document.getElementById("fname").value;
-        newPerson.lname = document.getElementById("lname").value;
-        newPerson.email = document.getElementById("email").value;
-
-        //Adding Object to Array
-        users.push(newPerson);
-        clearForm(newPerson);
-        displayData();
-      }
-
-      function clearForm(obj) {
-        for (a in obj) {
-          document.getElementById(a).value = "";
-        }
-      }
-
-      function validate() {
-        var check = false;
-        for (a in obj) {
-          value = document.getElementById(a).value;
-          if (value == "") {
-            check = true;
+      function getData() {
+        var getInfo = new XMLHttpRequest();
+        getInfo.onreadystatechange = function () {
+          if (getInfo.readyState == 4 && getInfo.status == 200) {
+            users = JSON.parse(getInfo.response);
+            console.log(getInfo.response);
+            displayData();
           }
-        }
+        };
 
-        if (!check) {
-          document.getElementById("myBtn").removeAttribute("disabled");
-        } else {
-          document.getElementById("myBtn").setAttribute("disabled", true);
-        }
+        getInfo.open(
+          "GET",
+          "http://www.filltext.com/?rows=5&id={index}&email={email}&username={username}&password={randomString|5}&pretty=true"
+        );
+        getInfo.send();
       }
 
       function displayData() {
@@ -123,6 +96,7 @@
       }
 
       function editUser(index) {
+        document.getElementById("myForm").style.display = "block";
         gIndex = index; //Saving globallu to use later
         console.log("edit User Called");
         document.getElementById("update").style.display = "block";
@@ -146,13 +120,8 @@
         console.log(newUser);
         users[gIndex] = newUser;
         displayData(); //to disaply latest data
-        clearForm(obj);
-        document.getElementById("update").style.display = "none";
-        document.getElementById("myBtn").style.display = "block";
-        validate();
+        document.getElementById("myForm").style.display = "none";
       }
-
-      displayData();
     </script>
   </body>
 </html>
