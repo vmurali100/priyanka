@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      img#myImg {
+        width: 300px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="myStates"></ul>
+    <br />
+    <div id="stateDetails"></div>
+    <img src="" alt="" id="myImg" />
+    <script>
+      var states = [
+        {
+          stateName: "Andhra",
+          capital: "Amaravathi",
+          language: "Telugu",
+          poulation: "5Cr",
+          image:
+            "https://assets.thehansindia.com/h-upload/2020/01/03/251000-andhra-pradesh.jpg",
+          description:
+            "https://www.thehansindia.com/andhra-pradesh/andhra-pradesh-stands-at-third-position-telangana-at-fifth-in-niti-aayog-sdg-index-report-594751",
+        },
+        {
+          stateName: "Karnataka",
+          capital: "Bangalore",
+          language: "Kannada",
+          poulation: "9Cr",
+          image:
+            "https://karnataka.gov.in/frontend/assets/img/en-kar-map-sm.png",
+          description: "",
+        },
+        {
+          stateName: "Tamil Nadu",
+          capital: "",
+          language: "",
+          poulation: "",
+          image: "",
+          description: "",
+        },
+      ];
+      states.forEach(function (obj, i) {
+        var myLi = document.createElement("li");
+        myLi.setAttribute("onclick", "showStateInformation(" + i + ")");
+        myLi.innerHTML = obj.stateName;
+        document.getElementById("myStates").appendChild(myLi);
+      });
+
+      function showStateInformation(index) {
+        console.log(states[index]);
+        var results = "";
+        for (a in states[index]) {
+          if (a != "image") {
+            results += states[index][a] + "<br>";
+          } else {
+            document
+              .getElementById("myImg")
+              .setAttribute("src", states[index][a]);
+          }
+        }
+
+        document.getElementById("stateDetails").innerHTML = results;
+      }
+    </script>
+  </body>
+</html>
