@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name :</label>
+      <input type="text" id="fname" /> <br />
+
+      <label for="lname">Last Name :</label>
+      <input type="text" id="lname" /> <br />
+
+      <label for="tel">Tel :</label>
+      <input type="text" id="tel" /> <br />
+
+      <label for="address">Address :</label>
+      <input type="text" id="address" /> <br />
+
+      <label for="city">City :</label>
+      <input type="text" id="city" /> <br />
+
+      <label for="state">State :</label>
+      <input type="text" id="state" /> <br />
+
+      <label for="zip">Zip :</label>
+      <input type="text" id="zip" /> <br />
+
+      <label for="gender">Gender :</label>
+      <input type="radio" name="gender" value="Male" /> Male
+      <input type="radio" name="gender" value="Female" /> Female
+      <br />
+      <label for="subject">Subjects :</label>
+      <input type="checkbox" name="subject" value="HTML" />HTML
+      <input type="checkbox" name="subject" value="CSS" />CSS
+      <input type="checkbox" name="subject" value="JS" />JS
+      <input type="checkbox" name="subject" value="ReactJS" />ReactJS
+      <br />
+
+      <button onclick="getData()" type="button">Get Data</button>
+    </form>
+    <hr />
+    <div id="demo" onclick="showData()"></div>
+    <script>
+      var allGenderElements = document.getElementsByName("gender");
+      var allSubjectElements = document.getElementsByName("subject");
+
+      var user = {
+        fname: "",
+        lname: "",
+        tel: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+        gender: "",
+        subjects: [],
+      };
+      function getData() {
+        user.subjects = [];
+        var results = "";
+        for (a in user) {
+          if (a !== "gender" && a !== "subjects") {
+            user[a] = document.getElementById(a).value;
+            results = results + document.getElementById(a).value + "<br>";
+          } else if (a == "gender") {
+            allGenderElements.forEach((element) => {
+              if (element.checked) {
+                user.gender = element.value;
+              }
+            });
+            results = results + user.gender + "<br>";
+          } else if (a == "subjects") {
+            allSubjectElements.forEach(function (element) {
+              if (element.checked) {
+                user.subjects.push(element.value);
+              }
+            });
+            results = results + user.subjects + "<br>";
+          }
+        }
+        document.getElementById("demo").innerHTML = results;
+        clearForm();
+      }
+
+      function clearForm() {
+        for (a in user) {
+          if (a != "gender" && a != "subjects") {
+            document.getElementById(a).value = "";
+          } else if (a == "gender") {
+            allGenderElements.forEach((element) => {
+              element.checked = false;
+            });
+          } else if (a == "subjects") {
+            allSubjectElements.forEach((element) => {
+              element.checked = false;
+            });
+          }
+        }
+      }
+
+      function showData() {
+        for (a in user) {
+          if (a !== "gender" && a != "subjects") {
+            document.getElementById(a).value = user[a];
+          } else if (a == "gender") {
+            allGenderElements.forEach((element) => {
+              if (element.value == user[a]) {
+                element.checked = true;
+              }
+            });
+          } else if (a == "subjects") {
+            allSubjectElements.forEach((element) => {
+              user[a].forEach((val) => {
+                if (element.value == val) {
+                  element.checked = true;
+                }
+              });
+            });
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
