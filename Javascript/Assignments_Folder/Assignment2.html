@@ -11,6 +11,8 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- <button>Add New State Information</butto''n> -->
+    <input type="text" onkeyup="searchInfo()" id="mySearch" />
     <ul id="myStates"></ul>
     <br />
     <div id="stateDetails"></div>
@@ -45,13 +47,16 @@
           description: "",
         },
       ];
-      states.forEach(function (obj, i) {
-        var myLi = document.createElement("li");
-        myLi.setAttribute("onclick", "showStateInformation(" + i + ")");
-        myLi.innerHTML = obj.stateName;
-        document.getElementById("myStates").appendChild(myLi);
-      });
-
+      function showAllStates(states) {
+        document.getElementById("myStates").innerHTML = "";
+        states.forEach(function (obj, i) {
+          var myLi = document.createElement("li");
+          myLi.setAttribute("onclick", "showStateInformation(" + i + ")");
+          myLi.innerHTML = obj.stateName;
+          document.getElementById("myStates").appendChild(myLi);
+        });
+      }
+      showAllStates(states);
       function showStateInformation(index) {
         console.log(states[index]);
         var results = "";
@@ -66,6 +71,14 @@
         }
 
         document.getElementById("stateDetails").innerHTML = results;
+      }
+
+      function searchInfo() {
+        var search = document.getElementById("mySearch").value;
+        var searchResults = states.filter(function (state) {
+          return state.stateName.toLocaleLowerCase().indexOf(search) > -1;
+        });
+        showAllStates(searchResults);
       }
     </script>
   </body>
