@@ -7,12 +7,13 @@ export default class Address extends Component {
   }
 
   render() {
+    let { myName, area, city, pin } = this.props.myAddress; // Destructuring
     return (
       <div>
-        <p>Name :{this.props.myAddress.myName}</p>
-        <p>Area: {this.props.myAddress.area}</p>
-        <p>City :{this.props.myAddress.city}</p>
-        <p>Pin:{this.props.myAddress.pin}</p>
+        <p>Name :{myName}</p>
+        <p>Area: {area}</p>
+        <p>City :{city}</p>
+        <p>Pin:{pin}</p>
       </div>
     );
   }

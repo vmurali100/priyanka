@@ -24,8 +24,12 @@ const Murali = () => {
     <div>
       <button
         onClick={() => {
-          console.log(address);
-          setAddress({ ...address, city: "Chennai" });
+          setAddress({
+            ...address,
+            area: "Chennasandra",
+            city: "Chennai",
+            pin: 560026,
+          });
         }}
       >
         Change NAME
