@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Address from "./Address";
 
-class Priya extends Component {
+export default class Priya1 extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      myName: "Murali",
+      myName: "Priyanka",
       city: "Bangalore",
       area: "Whitefield",
       pin: 560066,
@@ -16,11 +16,8 @@ class Priya extends Component {
   render() {
     return (
       <div>
-        <h2>Hello From Class Component - {this.state.myName}</h2>
         <Address myAddress={this.state} />
       </div>
     );
   }
 }
-
-export default Priya;
