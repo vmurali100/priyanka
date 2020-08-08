@@ -7,10 +7,12 @@ import Priyanka from "./Priyanka";
 import Priya from "./Priya";
 import Parent from "./Parent";
 import List from "./List";
+import Stylesheet from "./Stylesheet";
+import Form1 from "./Forms/Form1";
 
 ReactDOM.render(
   <React.StrictMode>
-    <List />
+    <Form1 />
   </React.StrictMode>,
   document.getElementById("root")
 );
