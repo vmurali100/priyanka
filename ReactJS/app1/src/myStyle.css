@@ -1,3 +1,7 @@
 .primary {
   color: red;
 }
+
+.MuiPaper-root {
+  background-color: none !important;
+}
