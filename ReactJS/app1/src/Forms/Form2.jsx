@@ -75,7 +75,7 @@ export default class Form2 extends Component {
           </button>
         </form>
         <hr />
-
+        <br />
         {this.state.users.map((user) => {
           return (
             <p>
