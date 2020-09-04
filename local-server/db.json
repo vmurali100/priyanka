@@ -1,29 +1,19 @@
 {
   "users": [
     {
-      "fname": "Murali",
-      "lname": "Krishna",
-      "id": 1
+      "fname": "js",
+      "lname": "user",
+      "id": 7
     },
     {
-      "fname": "Priyanka",
-      "lname": "R",
-      "id": 2
+      "fname": "js1",
+      "lname": "users",
+      "id": 9
     },
     {
-      "fname": "Sam",
-      "lname": "Sundar",
-      "id": 3
-    },
-    {
-      "fname": "Ravi",
-      "lname": "Krishna",
-      "id": 4
-    },
-    {
-      "fname": "Dinesh",
-      "lname": "Krishna",
-      "id": 5
+      "fname": "js3",
+      "lname": "sam",
+      "id": 11
     }
   ]
 }

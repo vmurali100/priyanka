@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="fname">First Name : </label>
+      <input type="text" id="fname" /> <br />
+      <label for="fname">Last Name : </label>
+      <input type="text" id="lname" /> <br />
+      <button onclick="addUser()" type="button">Add User</button>
+    </form>
+    <ul id="allUsers"></ul>
+    <script>
+      let users = [];
+      function addUser() {
+        let user = {
+          fname: "",
+          lname: "",
+        };
+        user.fname = document.getElementById("fname").value;
+        user.lname = document.getElementById("lname").value;
+        console.log(user);
+        var addUser = new XMLHttpRequest();
+        addUser.onreadystatechange = function () {
+          if (addUser.readyState == 4 && addUser.status == 201) {
+            console.log("User Add Successfully");
+            getUsers();
+          }
+        };
+        addUser.open("POST", "http://localhost:3000/users");
+        addUser.setRequestHeader("Content-type", "application/json");
+        addUser.send(JSON.stringify(user));
+      }
+
+      function getUsers() {
+        var getUser = new XMLHttpRequest();
+        getUser.onreadystatechange = function () {
+          if (getUser.readyState == 4 && getUser.status == 200) {
+            console.log(JSON.parse(getUser.responseText));
+            users = JSON.parse(getUser.responseText);
+            displayUsers();
+          }
+        };
+        getUser.open("GET", "http://localhost:3000/users");
+        getUser.send();
+      }
+
+      function displayUsers() {
+        document.getElementById("allUsers").innerHTML = "";
+        users.forEach((user, i) => {
+          let userElm = document.createElement("li");
+          userElm.innerHTML = user.fname;
+          userElm.setAttribute("onclick", "delteUser(" + i + ")");
+          document.getElementById("allUsers").appendChild(userElm);
+        });
+      }
+
+      getUsers();
+
+      function delteUser(i) {
+        let user = users[i];
+        var getUser = new XMLHttpRequest();
+        getUser.onreadystatechange = function () {
+          if (getUser.readyState == 4 && getUser.status == 200) {
+            location.reload();
+          }
+        };
+        getUser.open("DELETE", "http://localhost:3000/users/" + user.id);
+        getUser.send();
+      }
+    </script>
+  </body>
+</html>
