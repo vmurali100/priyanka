@@ -4,13 +4,16 @@ import "./App.css";
 import ClickCounter from "./ClickCounter";
 import HoverCount from "./HoverCount";
 import { UserProvider } from "./UserContext";
+import { Murali, Narendra } from "./Narendra";
 
 function App() {
   return (
     <div className="App">
       <UserProvider value="Priyanka">
-        <ClickCounter />
-        <HoverCount />
+        {/* <ClickCounter />
+        <HoverCount /> */}
+        <Murali />
+        <Narendra />
       </UserProvider>
     </div>
   );
