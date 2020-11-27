@@ -6,17 +6,30 @@
   height: 40vmin;
   pointer-events: none;
 }
+.item {
+  background: #61dafb;
+  color: red;
+  margin: 2px;
+}
+ul {
+  padding: 0;
+}
 
+li {
+  display: inline-block;
+  margin: 2px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.bar {
-  width: 200px;
-  height: 30px;
-  border: 1px solid;
-  margin: 2px;
+.progress-done {
+  height: 25px;
+}
+.progress-bar {
+  margin: 5px auto;
+  background: grey;
 }
 
 .App-header {
@@ -29,7 +42,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+span {
+  position: absolute;
+  left: 46%;
+}
 .App-link {
   color: #61dafb;
 }

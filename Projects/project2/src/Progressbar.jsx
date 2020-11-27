@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Progress from "./Progress";
 
 const Progressbar = () => {
   const [bars, setbars] = useState([]);
@@ -20,15 +21,54 @@ const Progressbar = () => {
       setlimit(response.data.limit);
     });
   };
+
+  const handleClick = (btnValue) => {
+    console.log(btnValue);
+    const allBarValues = [...bars];
+    let val = allBarValues[selectedBar] + btnValue;
+    if (val <= 0) {
+      val = 0;
+    }
+    allBarValues[selectedBar] = val;
+    setbars(allBarValues);
+  };
   return (
-    <div>
-      {bars.map((bar) => {
-        return <div className="bar"></div>;
-      })}
-
-      {/* {buttons} */}
-
-      {/* {select} */}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm item">One of three columns</div>
+        <div class="col-sm item">
+          <div className="bars">
+            {bars.map((bar) => {
+              return <Progress bar={bar} />;
+            })}
+          </div>
+          <ul>
+            <li>
+              <select name="" id="">
+                {bars.map((bar, i) => {
+                  return <option>Progress Bar #{i + 1}</option>;
+                })}
+              </select>
+            </li>
+            {buttons.map((btn) => {
+              return (
+                <li>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={() => {
+                      handleClick(btn);
+                    }}
+                  >
+                    {btn}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div class="col-sm item">One of three columns</div>
+      </div>
     </div>
   );
 };
